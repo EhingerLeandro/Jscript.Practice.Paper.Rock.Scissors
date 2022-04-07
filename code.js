@@ -17,25 +17,38 @@ function getComputerChoice(){
 function convertToWord (letter){
     if(letter==="r") return "Rock";
     if(letter ==="p") return "Paper";
-    return "Scissors";
+    return "Scissor";
 }
 
 function win (user, computer){
     userScore++;
-    userScore_span.innerHTML=userScore;
+    userScore_span.innerHTML=`<b style="color:#5c5">${userScore}</b>`;
+    const smallUserWord = 'User'.fontsize(3).sub();
+    const smallComputerWord = 'Comp'.fontsize(3).sub();
+    const userChoice_div = document.getElementById(user);
     computerScore_span.innerHTML = computerScore;
-    result_p.innerHTML =  `${convertToWord(user)} <b style="color: #88f">beats</b> ${convertToWord(computer)} <br> <b style='color:#8f8'> You Win.</b>`;
+    result_p.innerHTML =  `${convertToWord(user)} ${smallUserWord} <b style="color: #88f">beats</b> ${convertToWord(computer)} ${smallComputerWord}<br> <b style='color:#8f8'> You Win.</b>`;
+    userChoice_div.classList.add('green-glow');
+    setTimeout(()=> userChoice_div.classList.remove('green-glow'), 300);
 }
 
 function lose (user, computer){
     computerScore++;
     userScore_span.innerHTML=userScore;
-    computerScore_span.innerHTML = computerScore;
-    result_p.innerHTML =  `${convertToWord(user)} <b style="color: #88f">doesn't beat</b> ${convertToWord(computer)} <br><b style='color:#f88'> You Lose.</b>`;
+    const smallUserWord = 'User'.fontsize(3).sub();
+    const smallComputerWord = 'Comp'.fontsize(3).sub();
+    const userChoice_div = document.getElementById(user);
+    computerScore_span.innerHTML = `<b style="color:#f55">${computerScore}</b>`;
+    result_p.innerHTML =  `${convertToWord(user)} ${smallUserWord} <b style="color: #88f">doesn't beat</b> ${convertToWord(computer)} ${smallComputerWord} <br><b style='color:#f88'> You Lose.</b>`;
+    userChoice_div.classList.add('red-glow');
+    setTimeout(() => userChoice_div.classList.remove('red-glow'), 300);
 }
 
-function draw (){
-    result_p.innerHTML = `<b style="color: #88f">¡It's a draw!</b>`
+function draw (user, computer){
+    result_p.innerHTML = `<b style="color: #fa2">¡It's a draw!</b>`
+    const userChoice_div = document.getElementById(user);
+    userChoice_div.classList.add('yellow-glow');
+    setTimeout(function (){userChoice_div.classList.remove('yellow-glow')}, 300);
 }
 
 function game(userChoice){

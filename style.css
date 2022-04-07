@@ -97,3 +97,17 @@ font-size: 40px;
     margin-top:20px;
 
 }
+
+.green-glow {
+    border: 4px solid #4c7;
+    box-shadow: 0 0 10px #3b3;
+}
+
+.red-glow {
+    border: 4px solid #f11;
+    box-shadow: 0 0 10px #c11;
+}
+.yellow-glow {
+    border: 4px solid #f60;
+    box-shadow: 0 0 10px #f50;
+}
